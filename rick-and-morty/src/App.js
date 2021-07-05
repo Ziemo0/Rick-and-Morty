@@ -7,7 +7,7 @@ function App() {
 
   return (
     <div className="App">
-      <p>TEST</p>
+      <h1>Rick and Morty</h1>
       <Api></Api>
     </div>
   );

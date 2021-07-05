@@ -1,0 +1,52 @@
+.container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.chInfo{
+    background-color: #fecf16;
+    margin: 10px;
+    padding: 10px;
+}
+
+.paginationButton{
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    height: 60px;
+}
+
+.paginationButton a {
+    padding: 10px;
+    margin: 6px;
+    border: 2px solid #1a8d6a;
+    color: #1a8d6a;
+    border-radius: 8px;
+    cursor: pointer;
+  
+}
+
+.paginationAcitve a{
+    background-color: #1a8d6a;
+    color: white;
+}
+
+.disabledButton a{
+    background-color: white;
+    color: grey;
+    border: 2px solid grey;
+    cursor: none;
+}
+
+.previousButton:hover{
+    background-color: #1a8d6a;
+    color: white;
+    transition: 0.3s ease;
+}
+
+.nextButton:hover{
+    background-color: #1a8d6a;
+    color: white;
+    transition: 0.3s ease;
+}
