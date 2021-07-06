@@ -9,7 +9,7 @@ function CharacterPage(props){
 
     console.log(props.location.state.character);
 
-    console.log(props.location.state.character.episode)
+    console.log(episodesArray[0])
   
     return(
         
@@ -28,15 +28,18 @@ function CharacterPage(props){
                 <li>Created: {props.location.state.character.created}</li>
             </ul>
             <ul>
+            <p>EPISODES:</p>
                 {
-                    episodesArray.map((episode , id) => <li key={id}> {episode} </li>)
+                    episodesArray[0].map((episode , id) => <a key={id} href={episode}> { episode } </a>)
+                    
                 }
             </ul>
-
+            <div className="backMenu">
             <Link className="back" to={{
         pathname: `/`
             }}
             >Back</Link>
+            </div>
         </div>  
         </div>
     );
