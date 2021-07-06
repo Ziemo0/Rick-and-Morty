@@ -3,8 +3,9 @@ import axios from 'axios';
 import './api.css';
 import { Button, TextField } from '@material-ui/core';
 import ReactPaginate from 'react-paginate';
+import { Link } from 'react-router-dom';
 
-
+//fetch api script
 const fetchData = () => {
   return axios.get(`https://rickandmortyapi.com/api/character/`)
   .then((res) => {
@@ -38,11 +39,15 @@ function Api() {
 
     const [searchCh, setSearchCh] = useState('');
 
+  
+
     return (
     <div className="App">
       <TextField label="Search" onChange={event => {setSearchCh(event.target.value)}}></TextField>
       <div className="container">
       {characters.filter((val) => {
+
+        //search script
         if(searchCh === ""){
           return val;
         } else if (val.name.toLowerCase().includes(searchCh.toLowerCase())) {
@@ -50,16 +55,23 @@ function Api() {
         } else {
           return false;
         }
-
+        //display characters script
       }).map((character, id) => <div className="chInfo" key={id}>
       <img src={character.image} alt="pic"/>
       <p>{character.name}</p>
-    
-      <Button variant="contained" color="primary" onClick={() => (console.log({pageNumber}))}>
+      <div className="divBIO">
+      <Link className="BIO" to={{
+        pathname: `/characterPage/${character.id}`,
+        state: {character}
+        
+        }}>BIO</Link>
+      </div>
+      <Button variant="contained" color="primary" onClick={() => console.log(character.id)}>
         Episodes
       </Button>
       </div>)}
       </div>
+
       <ReactPaginate 
          previousLabel={"<"}
          nextLabel={">"}

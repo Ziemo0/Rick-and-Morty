@@ -7,12 +7,13 @@
 .chInfo{
     background-color: #fecf16;
     margin: 10px;
-    padding: 10px;    
+    padding: 10px;
+    font-family: 'Short Stack', cursive;
+    font-size: 18px;  
 }
 
 .chInfo:hover{
     transition: box-shadow 0.3s;
-    cursor: pointer;
     box-shadow: 0 0 20px #888888
 }
 
@@ -54,5 +55,24 @@
 .nextButton:hover{
     background-color: #1a8d6a;
     color: white;
+    transition: 0.3s ease;
+}
+
+.divBIO{
+    margin: auto;
+    margin-bottom: 10px;
+}
+
+.BIO{
+    color: white;
+    text-decoration: none;
+    background-color: #5200cc;
+    border-radius: 5px;
+    font-family: 'Roboto', sans-serif;
+    padding: 8px 20px 8px 20px;
+}
+
+.BIO:hover{
+    background-color: #360086;
     transition: 0.3s ease;
 }
