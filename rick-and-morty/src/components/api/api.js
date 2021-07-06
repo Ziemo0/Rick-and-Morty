@@ -6,10 +6,12 @@ import ReactPaginate from 'react-paginate';
 import { Link } from 'react-router-dom';
 
 //fetch api script
+
 const fetchData = () => {
   return axios.get(`https://rickandmortyapi.com/api/character/`)
   .then((res) => {
-    const {results} = res.data;
+    const results = res.data;
+    console.log(results);
     return results;
   })
   .catch((err) => {
@@ -20,22 +22,26 @@ const fetchData = () => {
 
 function Api() {
  
+  const [pages, setPages] = useState(null);
+
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const [nextPage, setNextPage] = useState(null);
 
   const [characters, setCharacters] = useState([]);
     useEffect(() => {
       fetchData()
       .then(apiCharacters => {
-        setCharacters(apiCharacters)
+        setCharacters(apiCharacters.results)
+        setPages(apiCharacters.info.pages)
+        setNextPage(apiCharacters.info.next)
       })
     }, [])
 
-
-    const [pageNumber, setPageNumber] = useState(1);
-
-    const changePage = ({selected}) => {
-        setPageNumber(selected);
-    };
-
+    function handlePageClick({ selected: selectedPage }) {
+      setCurrentPage(selectedPage);
+    }
+    
     const [searchCh, setSearchCh] = useState('');
 
     return (
@@ -75,8 +81,8 @@ function Api() {
          nextLabel={">"}
 
          //PAGE COUNT TO DO
-         pageCount={5}
-         onPageChange={changePage}
+         pageCount={pages}
+         onPageChange={handlePageClick}
          containerClassName={"paginationButton"}
          previousLinkClassName={"previousButton"}
          nextLinkClassName={"nextButton"}
