@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './api.css';
-import { Button } from '@material-ui/core';
+import { Button, TextField } from '@material-ui/core';
 import ReactPaginate from 'react-paginate';
 
 
@@ -36,10 +36,22 @@ function Api() {
 
     const pgCount = 5;
 
+    const [searchCh, setSearchCh] = useState('');
+
     return (
     <div className="App">
+      <TextField label="Search" onChange={event => {setSearchCh(event.target.value)}}></TextField>
       <div className="container">
-      {characters.map((character, id) => <div className="chInfo" key={id}>
+      {characters.filter((val) => {
+        if(searchCh === ""){
+          return val;
+        } else if (val.name.toLowerCase().includes(searchCh.toLowerCase())) {
+          return val;
+        } else {
+          return false;
+        }
+
+      }).map((character, id) => <div className="chInfo" key={id}>
       <img src={character.image} alt="pic"/>
       <p>{character.name}</p>
     
