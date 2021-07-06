@@ -22,21 +22,24 @@
     justify-content: center;
     list-style: none;
     height: 60px;
+    margin-left: -40px;
 }
 
 .paginationButton a {
     padding: 10px;
     margin: 6px;
-    border: 2px solid #1a8d6a;
-    color: #1a8d6a;
+    border: 2px solid #fecf16;;
+    color: black;
     border-radius: 8px;
     cursor: pointer;
+    font-family: 'Short Stack', cursive;
   
 }
 
 .paginationAcitve a{
-    background-color: #1a8d6a;
+    background-color: #fecf16;;
     color: white;
+    font-family: 'Short Stack', cursive;
 }
 
 .disabledButton a{
@@ -44,18 +47,21 @@
     color: grey;
     border: 2px solid grey;
     cursor: default;
+    font-family: 'Short Stack', cursive;
 }
 
 .previousButton:hover{
-    background-color: #1a8d6a;
+    background-color: #fecf16;;
     color: white;
     transition: 0.3s ease;
+    font-family: 'Short Stack', cursive;
 }
 
 .nextButton:hover{
-    background-color: #1a8d6a;
+    background-color: #fecf16;;
     color: white;
     transition: 0.3s ease;
+    font-family: 'Short Stack', cursive;
 }
 
 .divBIO{

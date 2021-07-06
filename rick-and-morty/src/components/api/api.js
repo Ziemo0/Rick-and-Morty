@@ -10,13 +10,13 @@ const fetchData = () => {
   return axios.get(`https://rickandmortyapi.com/api/character/`)
   .then((res) => {
     const {results} = res.data;
-    console.log(results);
     return results;
   })
   .catch((err) => {
     console.log(err);
   })
 }
+
 
 function Api() {
  
@@ -29,17 +29,14 @@ function Api() {
       })
     }, [])
 
+
     const [pageNumber, setPageNumber] = useState(1);
 
     const changePage = ({selected}) => {
         setPageNumber(selected);
     };
 
-    const pgCount = 5;
-
     const [searchCh, setSearchCh] = useState('');
-
-  
 
     return (
     <div className="App">
@@ -71,13 +68,14 @@ function Api() {
       </Button>
       </div>)}
       </div>
-
+  
       <ReactPaginate 
+        
          previousLabel={"<"}
          nextLabel={">"}
 
          //PAGE COUNT TO DO
-         pageCount={pgCount}
+         pageCount={5}
          onPageChange={changePage}
          containerClassName={"paginationButton"}
          previousLinkClassName={"previousButton"}
@@ -85,9 +83,10 @@ function Api() {
          activeClassName={"paginationAcitve"}
          disabledClassName={"disabledButton"}
         >
-
+      
         </ReactPaginate>
     </div>
+
   );
 }
 

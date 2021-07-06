@@ -7,10 +7,6 @@ function CharacterPage(props){
 
     const episodesArray =  [props.location.state.character.episode];
 
-    console.log(props.location.state.character);
-
-    console.log(episodesArray[0])
-  
     return(
         
         <div className="content">
@@ -24,19 +20,20 @@ function CharacterPage(props){
                 <li>Location: {props.location.state.character.location.name}</li>
                 <li>Origin: {props.location.state.character.origin.name}</li>
                 <li>Status: {props.location.state.character.status}</li>
+                <li>Type: {props.location.state.character.type === "" ? 'unknown' : props.location.state.character.type}</li>
                 <li>ID: {props.location.state.character.id}</li>
                 <li>Created: {props.location.state.character.created}</li>
             </ul>
             <ul>
             <p>EPISODES:</p>
                 {
-                    episodesArray[0].map((episode , id) => <a key={id} href={episode}> { episode } </a>)
+                    episodesArray[0].map((episode, id) => <li><a key={id} href={episode}> { episode } </a></li>)
                     
                 }
             </ul>
             <div className="backMenu">
             <Link className="back" to={{
-        pathname: `/`
+            pathname: `/`
             }}
             >Back</Link>
             </div>
@@ -44,6 +41,5 @@ function CharacterPage(props){
         </div>
     );
 }
-
 
 export default CharacterPage;
