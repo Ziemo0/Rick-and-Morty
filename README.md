@@ -1,13 +1,12 @@
-Rick and Morty project
+**Rick and Morty project**
 
-Setup:
+## Setup:
 1. Install essential packages (list below):
 - react-router-dom
 - react-paginate
 - @material-ui/core
 - axios
 
-## Available Scripts
 You can use npm to install packages:
 
 In the project directory, you can run:
