@@ -8,8 +8,6 @@
 - axios
 
 You can use npm to install packages:
-
-In the project directory, you can run:
 ```
 npm install <package name>
 ```
