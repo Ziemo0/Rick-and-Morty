@@ -7,43 +7,49 @@ import { Link } from 'react-router-dom';
 
 //fetch api script
 
-const fetchData = () => {
-  return axios.get(`https://rickandmortyapi.com/api/character/`)
-  .then((res) => {
-    const results = res.data;
-    console.log(results);
-    return results;
-  })
-  .catch((err) => {
-    console.log(err);
-  })
-}
 
 
 function Api() {
- 
-  const [pages, setPages] = useState(null);
 
   const [currentPage, setCurrentPage] = useState(1);
 
-  const [nextPage, setNextPage] = useState(null);
+  function handlePageClick({ selected: selectedPage }) {
+    setCurrentPage(selectedPage+1);
+  }
+  
+  const api = `https://rickandmortyapi.com/api/character/?page=${currentPage}`;
+
+  const fetchData = () => {
+    return axios.get(api)
+    .then((res) => {
+      const results = res.data;
+      return results;
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+  }
+  
+ 
+  const [pages, setPages] = useState(null);
 
   const [characters, setCharacters] = useState([]);
     useEffect(() => {
-      fetchData()
+
+      const abortCont = new AbortController();
+
+      fetchData({ signal: abortCont.signal })
       .then(apiCharacters => {
         setCharacters(apiCharacters.results)
         setPages(apiCharacters.info.pages)
-        setNextPage(apiCharacters.info.next)
+        
       })
-    }, [])
-
-    function handlePageClick({ selected: selectedPage }) {
-      setCurrentPage(selectedPage);
-    }
-    
+      return () => abortCont.abort();
+    }, [api])
+  
     const [searchCh, setSearchCh] = useState('');
 
+    
     return (
     <div className="App">
       <TextField label="Search" onChange={event => {setSearchCh(event.target.value)}}></TextField>
@@ -79,8 +85,6 @@ function Api() {
         
          previousLabel={"<"}
          nextLabel={">"}
-
-         //PAGE COUNT TO DO
          pageCount={pages}
          onPageChange={handlePageClick}
          containerClassName={"paginationButton"}

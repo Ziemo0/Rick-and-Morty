@@ -27,7 +27,7 @@ function CharacterPage(props){
             <ul>
             <p>EPISODES:</p>
                 {
-                    episodesArray[0].map((episode, id) => <li><a key={id} href={episode}> { episode } </a></li>)
+                    episodesArray[0].map((episode) => <li><a key={episode} href={episode}> { episode } </a></li>)
                     
                 }
             </ul>
