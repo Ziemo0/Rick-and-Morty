@@ -15,6 +15,8 @@ function CharacterPage(props){
         <div className="img">
         <img src={props.location.state.character.image} alt="img"/>
         </div>
+
+         {/*Character bio */}   
             <ul>
                 <li>Gender: {props.location.state.character.gender}</li>
                 <li>Location: {props.location.state.character.location.name}</li>
@@ -27,10 +29,11 @@ function CharacterPage(props){
             <ul>
             <p>EPISODES:</p>
                 {
-                    episodesArray[0].map((episode) => <li><a key={episode} href={episode}> { episode } </a></li>)
-                    
+                    episodesArray[0].map((episode, id) => <li><a key={id} href={episode}> { episode } </a></li>)
                 }
             </ul>
+
+            {/*Back button*/} 
             <div className="backMenu">
             <Link className="back" to={{
             pathname: `/`

@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './api.css';
-import { Button, TextField } from '@material-ui/core';
+import { TextField } from '@material-ui/core';
 import ReactPaginate from 'react-paginate';
 import { Link } from 'react-router-dom';
-
-//fetch api script
 
 
 
@@ -17,6 +15,7 @@ function Api() {
     setCurrentPage(selectedPage+1);
   }
   
+  //Fetch API script
   const api = `https://rickandmortyapi.com/api/character/?page=${currentPage}`;
 
   const fetchData = () => {
@@ -34,6 +33,8 @@ function Api() {
   const [pages, setPages] = useState(null);
 
   const [characters, setCharacters] = useState([]);
+
+
     useEffect(() => {
 
       const abortCont = new AbortController();
@@ -42,9 +43,9 @@ function Api() {
       .then(apiCharacters => {
         setCharacters(apiCharacters.results)
         setPages(apiCharacters.info.pages)
-        
       })
       return () => abortCont.abort();
+      // eslint-disable-next-line
     }, [api])
   
     const [searchCh, setSearchCh] = useState('');
@@ -68,19 +69,24 @@ function Api() {
       }).map((character, id) => <div className="chInfo" key={id}>
       <img src={character.image} alt="pic"/>
       <p>{character.name}</p>
+       
+        {/*Character page button*/} 
       <div className="divBIO">
       <Link className="BIO" to={{
         pathname: `/characterPage/${character.id}`,
         state: {character}
-        
         }}>BIO</Link>
       </div>
-      <Button variant="contained" color="primary" onClick={() => console.log(character.id)}>
-        Episodes
-      </Button>
+
+        {/*Episode droplist (in progress)*/} 
+        <label>EPISODES: </label>
+        <select key={id}>
+          <option> in progress </option>  
+        </select>
       </div>)}
       </div>
-  
+
+        {/*Pagination*/} 
       <ReactPaginate 
         
          previousLabel={"<"}
