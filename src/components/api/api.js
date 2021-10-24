@@ -78,11 +78,7 @@ function Api() {
         }}>BIO</Link>
       </div>
 
-        {/*Episode droplist (in progress)*/} 
-        <label>EPISODES: </label>
-        <select key={id}>
-          <option> in progress </option>  
-        </select>
+       
       </div>)}
       </div>
 
